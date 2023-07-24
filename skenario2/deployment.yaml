@@ -4,10 +4,30 @@ metadata:
   name: nginx-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-index-html-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: create-index-html
+          image: busybox
+          command: ["/bin/sh", "-c", "echo '<h1>INI DARI PV</h1>' > /usr/share/nginx/html/index.html"]
+          volumeMounts:
+            - name: app1-volume
+              mountPath: /usr/share/nginx/html
+      restartPolicy: Never
+      volumes:
+        - name: app1-volume
+          persistentVolumeClaim:
+            claimName: nginx-pvc
 ---
 apiVersion: v1
 kind: ConfigMap

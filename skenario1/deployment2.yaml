@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: nginx2
-        image: gilangvperdana/apps:latv2
+        # CHANGE IMAGE TO YOURS
+        image: gilangvperdana/apps:latv2 
         ports:
         - containerPort: 80
 ---
