@@ -1,4 +1,13 @@
-## Apps with DB
+# Note
+
+## Deplyoment
+- Create Deployment, Service, Configmap & Ingress with PV
+
+## Deployment2
+- Create Deployment, Service, Configmap & Ingress with PV
+
+## Deployment3
+- Create HPA for Deployment2
 
 ## AutoScaling
 ```
